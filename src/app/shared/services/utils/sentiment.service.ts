@@ -9,14 +9,11 @@ import {
   of,
   Subject,
 } from 'rxjs';
-import {
-  InsiderSentiment,
-  SentimentData,
-} from '../../interfaces/api/insider-sentiment';
+import { InsiderSentiment } from '../../interfaces/api/insider-sentiment';
 import { ChangeData, Sentiment } from '../../interfaces/app/sentiment';
 import { FinnHubService } from '../api/finn-hub.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SentimentService {
   private insiderSentimentS$ = new Subject<InsiderSentiment>();
   public insiderSentiment$ = this.insiderSentimentS$.asObservable();

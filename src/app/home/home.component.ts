@@ -4,6 +4,8 @@ import { CompanyService } from '../shared/services/utils/company.service';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Company } from '../shared/interfaces/app/company';
+import { FinnHubService } from '../shared/services/api/finn-hub.service';
+import { SentimentService } from '../shared/services/utils/sentiment.service';
 
 @Component({
   selector: 'exo-home',

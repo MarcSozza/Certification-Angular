@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Company } from '../../interfaces/app/company';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class LocalStorageService {
   private _companies: Company[] = this.getCompanies();
   constructor() {}

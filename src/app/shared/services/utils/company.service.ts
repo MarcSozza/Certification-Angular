@@ -17,7 +17,7 @@ import { Company } from '../../interfaces/app/company';
 import { FinnHubService } from '../api/finn-hub.service';
 import { LocalStorageService } from './local-storage.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CompanyService {
   private quoteS$ = new Subject<Quote>();
   private quote$ = this.quoteS$.asObservable();

@@ -4,9 +4,8 @@ import { Observable } from 'rxjs';
 import { InsiderSentiment } from '../../interfaces/api/insider-sentiment';
 import { Quote } from '../../interfaces/api/quote';
 import { SymbolLookup } from '../../interfaces/api/symbol-lookup';
-import { Sentiment } from '../../interfaces/app/sentiment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class FinnHubService {
   private API_KEY = 'bu4f8kn48v6uehqi3cqg';
   private URL = 'https://finnhub.io/api/v1';
