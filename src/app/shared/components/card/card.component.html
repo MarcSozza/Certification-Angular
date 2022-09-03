@@ -10,7 +10,7 @@
       <p>High Price Of Change {{ highPriceOfChange | currency: 'USD' }}</p>
       <p>Opening Price Of Day {{ openingPriceOfDay | currency: 'USD' }}</p>
     </div>
-    <exo-change [value]="castPercentChange"></exo-change>
+    <exo-change *ngIf="isValidValue()" [value]="castPercentChange"></exo-change>
   </div>
   <button (click)="triggerRedirection()">Go to Social Sentiment detail</button>
 </div>

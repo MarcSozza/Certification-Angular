@@ -53,12 +53,24 @@ export class CompanyService {
   private getQuotes(quote: string): void {
     this.finnHubApi
       .getQuotes(quote)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          console.log(err);
+          return of({} as Quote);
+        })
+      )
       .subscribe((data) => this.quoteS$.next(data));
   }
 
   private getSymbol(symbol: string): void {
     this.finnHubApi
       .getSymbole(symbol)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          console.log(err);
+          return of({} as SymbolLookup);
+        })
+      )
       .subscribe((data) => this.symbolLookupS$.next(data));
   }
 

@@ -42,6 +42,10 @@ export class CardComponent implements OnInit {
     this.delete.emit();
   }
 
+  public isValidValue(): boolean {
+    return this.castPercentChange !== 0;
+  }
+
   public triggerRedirection(): void {
     this.redirection.emit(this.company?.symbol?.displaySymbol);
   }

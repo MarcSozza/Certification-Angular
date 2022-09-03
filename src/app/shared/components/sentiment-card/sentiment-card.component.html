@@ -10,6 +10,6 @@
         <exo-no-data></exo-no-data>
       </ng-template>
     </div>
-    <exo-change [value]="change"></exo-change>
+    <exo-change *ngIf="isDefined()" [value]="change"></exo-change>
   </div>
 </div>
