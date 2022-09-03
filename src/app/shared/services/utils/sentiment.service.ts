@@ -39,10 +39,20 @@ export class SentimentService {
     return this.datepipe.transform(Date.now(), 'yyyy-MM-dd');
   }
 
+  private get currentMonth(): number {
+    return parseInt(this.datepipe.transform(Date.now(), 'MM'));
+  }
+
   private get dateMin(): string {
     let dateMin = new Date(this.dateMax);
     dateMin.setMonth(dateMin.getMonth() - 3);
     return this.datepipe.transform(dateMin, 'yyyy-MM-dd');
+  }
+
+  private lastMonth(number: number): number {
+    let dateMin = new Date(this.dateMax);
+    dateMin.setMonth(dateMin.getMonth() - number);
+    return parseInt(this.datepipe.transform(dateMin, 'MM'));
   }
 
   public getInsiderSentiment(query: string): void {
@@ -53,7 +63,21 @@ export class SentimentService {
   }
 
   public castToSentiments(insideSentiments: InsiderSentiment): Sentiment {
+    let data: ChangeData[] = this.constructThreeMonthData(insideSentiments);
+    this.isLoading$.next(false);
+    return {
+      symbol: insideSentiments.symbol,
+      data,
+    };
+  }
+
+  public constructThreeMonthData(
+    insideSentiments: InsiderSentiment
+  ): ChangeData[] {
     let data: ChangeData[] = [];
+    let currentMonth = this.currentMonth;
+
+    let actuallyMonthInApi: number[] = [];
     insideSentiments.data.forEach((insideSentiment) => {
       data.push({
         MSPR: insideSentiment.mspr,
@@ -61,10 +85,21 @@ export class SentimentService {
         month: insideSentiment.month,
       });
     });
-    this.isLoading$.next(false);
-    return {
-      symbol: insideSentiments.symbol,
-      data,
-    };
+
+    if (data.length < 3) {
+      let lastThreeMonth = [
+        this.lastMonth(3),
+        this.lastMonth(2),
+        this.lastMonth(1),
+      ];
+
+      lastThreeMonth.forEach((month) => {
+        if (data.find((change) => change.month === month)) {
+          console.log('lol');
+        }
+      });
+    }
+
+    return data;
   }
 }
