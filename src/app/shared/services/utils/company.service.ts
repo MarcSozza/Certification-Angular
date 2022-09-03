@@ -7,6 +7,7 @@ import {
   Observable,
   of,
   ReplaySubject,
+  Subject,
   zip,
 } from 'rxjs';
 import { Quote } from '../../interfaces/api/quote';
@@ -18,9 +19,9 @@ import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
-  private quoteS$ = new ReplaySubject<Quote>();
+  private quoteS$ = new Subject<Quote>();
   private quote$ = this.quoteS$.asObservable();
-  private symbolLookupS$ = new ReplaySubject<SymbolLookup>();
+  private symbolLookupS$ = new Subject<SymbolLookup>();
   private symbolLookup$ = this.symbolLookupS$.asObservable();
 
   private loadingS$ = new BehaviorSubject<boolean>(false);

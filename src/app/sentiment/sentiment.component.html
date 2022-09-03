@@ -1,4 +1,7 @@
 <div class="card">
+  <ng-container *ngIf="isLoading | async">
+    <exo-loader></exo-loader>
+  </ng-container>
   <ng-container *ngIf="sentiment | async as value">
     <h2>{{ value.symbol }}</h2>
     <exo-sentiment-card
@@ -7,4 +10,5 @@
     ></exo-sentiment-card>
   </ng-container>
 </div>
-<a routerLink="/home">Go to Home Page</a>
+<hr />
+<button routerLink="/home">Go to Home Page</button>
