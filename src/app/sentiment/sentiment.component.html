@@ -1,6 +1,10 @@
 <div class="card">
-  <exo-sentiment-card
-    *ngFor="let sentiment of sentiments | async"
-  ></exo-sentiment-card>
+  <ng-container *ngIf="sentiment | async as value">
+    <h2>{{ value.symbol }}</h2>
+    <exo-sentiment-card
+      *ngFor="let dataSentiment of value.data"
+      [sentiment]="dataSentiment"
+    ></exo-sentiment-card>
+  </ng-container>
 </div>
-<a routerLink="home">Go to Home Page</a>
+<a routerLink="/home">Go to Home Page</a>

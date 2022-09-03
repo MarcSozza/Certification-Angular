@@ -3,16 +3,10 @@ import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
-  combineLatest,
-  distinctUntilChanged,
-  forkJoin,
   map,
   Observable,
   of,
   ReplaySubject,
-  Subject,
-  take,
-  tap,
   zip,
 } from 'rxjs';
 import { Quote } from '../../interfaces/api/quote';

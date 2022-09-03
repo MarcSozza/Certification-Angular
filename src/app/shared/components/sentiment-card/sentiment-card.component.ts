@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Sentiment } from '../../interfaces/app/sentiment';
+import { ChangeData } from '../../interfaces/app/sentiment';
 
 @Component({
   selector: 'exo-sentiment-card',
@@ -7,7 +7,7 @@ import { Sentiment } from '../../interfaces/app/sentiment';
   styleUrls: ['./sentiment-card.component.css'],
 })
 export class SentimentCardComponent implements OnInit {
-  @Input() sentiment: Sentiment;
+  @Input() sentiment: ChangeData;
 
   constructor() {}
 
