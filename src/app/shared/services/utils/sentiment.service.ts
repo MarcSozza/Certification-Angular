@@ -75,30 +75,29 @@ export class SentimentService {
     insideSentiments: InsiderSentiment
   ): ChangeData[] {
     let data: ChangeData[] = [];
-    let currentMonth = this.currentMonth;
 
-    let actuallyMonthInApi: number[] = [];
-    insideSentiments.data.forEach((insideSentiment) => {
+    let lastThreeMonth = [
+      this.lastMonth(3),
+      this.lastMonth(2),
+      this.lastMonth(1),
+    ];
+
+    lastThreeMonth.forEach((month) => {
       data.push({
-        MSPR: insideSentiment.mspr,
-        change: insideSentiment.change,
-        month: insideSentiment.month,
+        MSPR: undefined,
+        change: undefined,
+        month: month,
       });
     });
 
-    if (data.length < 3) {
-      let lastThreeMonth = [
-        this.lastMonth(3),
-        this.lastMonth(2),
-        this.lastMonth(1),
-      ];
-
-      lastThreeMonth.forEach((month) => {
-        if (data.find((change) => change.month === month)) {
-          console.log('lol');
-        }
-      });
-    }
+    insideSentiments.data.forEach((insideSentiment) => {
+      let pos = lastThreeMonth.indexOf(insideSentiment.month);
+      data[pos] = {
+        MSPR: insideSentiment.mspr,
+        change: insideSentiment.change,
+        month: insideSentiment.month,
+      };
+    });
 
     return data;
   }

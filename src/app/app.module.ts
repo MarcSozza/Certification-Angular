@@ -16,6 +16,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { DatePipe } from '@angular/common';
 import { MonthConverterPipe } from './shared/pipe/month-converter.pipe';
 import { SentimentCardComponent } from './shared/components/sentiment-card/sentiment-card.component';
+import { NoDataComponent } from './shared/components/no-data/no-data.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { SentimentCardComponent } from './shared/components/sentiment-card/senti
     MonthConverterPipe,
     SentimentComponent,
     SentimentCardComponent,
+    NoDataComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

@@ -2,8 +2,13 @@
   <div class="flex-horizontal">
     <div>
       <p>Month: {{ month | monthConverter }}</p>
-      <p>Change: {{ change | currency }}</p>
-      <p>MSPR: {{ MSPR | number: '1.1-2' }}</p>
+      <ng-container *ngIf="isDefined(); else noData">
+        <p>Change: {{ change | currency }}</p>
+        <p>MSPR: {{ MSPR | number: '1.1-2' }}</p>
+      </ng-container>
+      <ng-template #noData>
+        <exo-no-data></exo-no-data>
+      </ng-template>
     </div>
     <exo-change [value]="change"></exo-change>
   </div>

@@ -24,4 +24,8 @@ export class SentimentCardComponent implements OnInit {
   public get MSPR(): number {
     return this.sentiment.MSPR;
   }
+
+  public isDefined() {
+    return !!this.sentiment.MSPR && !!this.sentiment.change;
+  }
 }
