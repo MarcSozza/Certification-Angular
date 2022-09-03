@@ -1,0 +1,13 @@
+<div class="card">
+  <h2>Enter the symbol of a stock to track (i.e AAPL, TSLA, GOOGL)</h2>
+  <form [formGroup]="formStock" (ngSubmit)="submit()">
+    <input
+      type="text"
+      name="stock"
+      id="stock"
+      placeholder="AAPL, TSLA..."
+      formControlName="stock"
+    />
+    <button [disabled]="isInvalid || (isLoading | async)">Track Stock</button>
+  </form>
+</div>

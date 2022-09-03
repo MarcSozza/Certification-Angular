@@ -1,0 +1,13 @@
+<div>
+  <exo-form></exo-form>
+  <hr />
+  <div *ngFor="let company of companies; let i = index">
+    <exo-card
+      [company]="company"
+      (delete)="deleteCompany(i)"
+      (redirection)="redirection($event)"
+    ></exo-card>
+    <hr />
+  </div>
+  <exo-loader *ngIf="isLoading | async"></exo-loader>
+</div>

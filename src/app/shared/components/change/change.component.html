@@ -1,0 +1,4 @@
+<p *ngIf="isPositive(); else negative" [color]="value">🢅</p>
+<ng-template #negative>
+  <p [color]="value">🢆</p>
+</ng-template>

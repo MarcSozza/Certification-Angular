@@ -1,0 +1,10 @@
+<div class="card" *ngIf="sentiment">
+  <div class="flex-horizontal">
+    <div>
+      <p>{{ month | monthConverter }}</p>
+      <p>{{ change | currency }}</p>
+      <p>{{ MSPR | number: '1.1-2' }}</p>
+    </div>
+    <exo-change [value]="change"></exo-change>
+  </div>
+</div>

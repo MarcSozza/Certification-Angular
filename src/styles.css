@@ -1,0 +1,30 @@
+/* Add application styles & imports to this file! */
+
+html,
+body {
+  background-color: #eee;
+}
+
+.card {
+  border: 5px solid black;
+  border-radius: 20px;
+  background-color: white;
+  padding: 25px;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.green {
+  font-size: 40px;
+  color: green;
+}
+
+.red {
+  font-size: 40px;
+  color: red;
+}

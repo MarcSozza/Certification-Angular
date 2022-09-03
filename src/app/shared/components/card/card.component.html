@@ -1,0 +1,16 @@
+<div class="card" *ngIf="company">
+  <div class="flex-horizontal">
+    <h3>{{ title }}</h3>
+    <button (click)="triggerDelete()">Delete</button>
+  </div>
+  <div class="flex-horizontal">
+    <div>
+      <p>Current Price {{ currentPrice | currency: 'USD' }}</p>
+      <p>Percent Change {{ percentChange | number: '1.1-2' }}%</p>
+      <p>High Price Of Change {{ highPriceOfChange | currency: 'USD' }}</p>
+      <p>Opening Price Of Day {{ openingPriceOfDay | currency: 'USD' }}</p>
+    </div>
+    <exo-change [value]="castPercentChange"></exo-change>
+  </div>
+  <a (click)="triggerRedirection()">Go to Social Sentiment detail</a>
+</div>
